@@ -1,8 +1,11 @@
 Blog::Application.routes.draw do
   resources :posts
-  #get "welcome/index"
+  get "welcome/index"
   root to: "welcome#index"
   #posts GET    /posts(.:format)          posts#index
+  resources :posts do
+   resources :comments
+  end
   #DELETE /posts/:id(.:format)      posts#destroy
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
