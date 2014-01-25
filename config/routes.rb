@@ -1,5 +1,6 @@
 Blog::Application.routes.draw do
   resources :posts
+  resources :login
   get "welcome/index"
   root to: "welcome#index"
   #posts GET    /posts(.:format)          posts#index
