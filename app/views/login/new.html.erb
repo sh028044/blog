@@ -1,0 +1,22 @@
+<%#
+# To change this license header, choose License Headers in Project Properties.
+# To change this template file, choose Tools | Templates
+# and open the template in the editor.
+%>
+<h2>Sign up</h2>
+<%= form_for @login,url: login_index_path do |f| %>
+  <p>
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </p>
+ 
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back', login_index_path %>
