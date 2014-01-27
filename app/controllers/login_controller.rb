@@ -18,9 +18,11 @@ class LoginController < ApplicationController
     if params[:login]
       @login=Login.find_by params[:login]
       if @login != nil && params[:login][:password] == @login.password
-      redirect_to :posts
+        session[:username]=@login.username
+        session[:user_id]=@login.id
+        redirect_to :posts
       else
-      render text: "login fail!"
+       render text: "login fail!"
       end
     end
   end
