@@ -1,10 +1,9 @@
 class PostsController < ApplicationController
-	#http_basic_authenticate_with name: "admin", password: "admin",except: [:index, :show]
 	def new
 	 @post= Post.new
 	end
 	def create
-	 @post = Post.new(params[:post].permit(:title, :text))
+	 @post = Post.new(params[:post].permit(:title, :text,:user_id))
   	 if @post.save
     	  redirect_to @post
   	 else
@@ -16,6 +15,7 @@ class PostsController < ApplicationController
 	end
 	def index
   	 @posts = Post.all
+     @logins = Login.find(:all)
 	end
 	def edit
   	 @post = Post.find(params[:id])
@@ -35,6 +35,6 @@ class PostsController < ApplicationController
 	end
 private
   	def post_params
-    	 params.require(:post).permit(:title, :text)
+    	 params.require(:post).permit(:title, :text,:user_id)
   	end
 end

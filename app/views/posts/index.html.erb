@@ -5,18 +5,27 @@
  
 <table>
   <tr>
+    <th>Owner</th>
     <th>Title</th>
     <th>Text</th>
   </tr>
- 
+  
+  <% users={} %> 
+  <% @logins.each do |login| %>
+  <% users[login.id]=login.username %>
+  <% end %>
+  
   <% @posts.each do |post| %>
     <tr>
+      <td><%= users[post.user_id] %></td>
       <td><%= post.title %></td>
       <td><%= post.text %></td>
       <td><%= link_to 'Show', post %></td>
+          <% if session[:user_id]==post.user_id %>
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
       <td><%= link_to 'Destroy', post_path(post),
-              method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
     </tr>
   <% end %>
 </table>

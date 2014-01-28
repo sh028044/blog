@@ -1,3 +1,4 @@
+<%= render 'session' %>
 <%= form_for @post do |f| %>
   <% if @post.errors.any? %>
   <div id="error_explanation">
@@ -10,6 +11,9 @@
     </ul>
   </div>
   <% end %>
+  <p>
+   <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  </p>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
