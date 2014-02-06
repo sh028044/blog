@@ -1,9 +1,11 @@
 Blog::Application.routes.draw do
+  devise_for :users
+  #devise_for :users, :controllers => { :sessions => "users/sessions" }
   resources :posts
   resources :login
-  #get "welcome/index"
-  #root to: "welcome#index"
-  root to: "login#index"
+  resources :users
+  root to: "welcome#index"
+  #root to: "login#index"
   resources :posts do
    resources :comments
   end

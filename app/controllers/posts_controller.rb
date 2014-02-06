@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 	end
 	def index
   	 @posts = Post.all
-     @logins = Login.find(:all)
+     @users = User.find(:all)
 	end
 	def edit
   	 @post = Post.find(params[:id])

@@ -1,2 +1,7 @@
 <h1>Hello, Rails!</h1>
-<%= link_to "My Blog", controller: "posts" %>
+<%= current_user.email%>
+<% if user_signed_in? %>
+<%= link_to "My Blog", posts_path %>
+<% end %>
+<%= link_to "login", user_session_path %>
+<%= link_to "logout", destroy_user_session_path %>
