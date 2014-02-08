@@ -1,7 +1,8 @@
 <h1>Hello, Rails!</h1>
-<%= current_user.email%>
 <% if user_signed_in? %>
+<%= current_user.email %>
 <%= link_to "My Blog", posts_path %>
-<% end %>
+<%= link_to "logout", destroy_user_session_path, method: :delete %>
+<% else %>
 <%= link_to "login", user_session_path %>
-<%= link_to "logout", destroy_user_session_path %>
+<% end %>

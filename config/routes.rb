@@ -1,6 +1,5 @@
 Blog::Application.routes.draw do
-  devise_for :users
-  #devise_for :users, :controllers => { :sessions => "users/sessions" }
+  devise_for :users, :controllers => { :sessions => "users/sessions" }
   resources :posts
   resources :login
   resources :users
