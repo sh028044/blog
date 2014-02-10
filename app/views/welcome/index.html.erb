@@ -4,5 +4,6 @@
 <%= link_to "My Blog", posts_path %>
 <%= link_to "logout", destroy_user_session_path, method: :delete %>
 <% else %>
-<%= link_to "login", user_session_path %>
+<%= link_to "local login", user_session_path %>
 <% end %>
+<%= link_to "facebook_login",oauth2_index_path( :login_url => 'https://graph.facebook.com/',:token_url=>'https://graph.facebook.com/me') %>
