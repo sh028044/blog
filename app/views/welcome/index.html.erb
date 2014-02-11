@@ -4,5 +4,6 @@
 <%= link_to "My Blog", posts_path %>
 <%= link_to "logout", destroy_user_session_path, method: :delete %>
 <% else %>
-<%= link_to "login", user_session_path %>
+    <%= link_to "login", user_session_path %>
+    <%= link_to "facebook login", user_omniauth_authorize_path(:facebook) %>
 <% end %>
