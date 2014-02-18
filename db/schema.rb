@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211120014) do
+ActiveRecord::Schema.define(version: 20140218025537) do
 
   create_table "comments", force: true do |t|
     t.string   "commenter"
@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(version: 20140211120014) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uploadfile_file_name"
+    t.string   "uploadfile_content_type"
+    t.integer  "uploadfile_file_size"
+    t.datetime "uploadfile_updated_at"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
@@ -57,6 +61,10 @@ ActiveRecord::Schema.define(version: 20140211120014) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

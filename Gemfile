@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "paperclip", "~> 3.0"
+
 gem 'kaminari'
 
 gem 'omniauth-facebook'

@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 	end
 	def create
 	 #@post = Post.new(params[:post].permit(:title, :text,:user_id))
-     @post=current_user.posts.build(params[:post].permit(:title, :text))
+     @post=current_user.posts.build(params[:post].permit(:title, :text,:uploadfile))
   	 if @post.save
     	  redirect_to @post
   	 else
@@ -38,6 +38,6 @@ class PostsController < ApplicationController
 	end
 private
   	def post_params
-    	 params.require(:post).permit(:title, :text,:user_id)
+    	 params.require(:post).permit(:title, :text,:user_id,:uploadfile)
   	end
 end

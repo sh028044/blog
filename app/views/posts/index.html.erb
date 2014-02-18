@@ -8,6 +8,7 @@
     <th>Owner</th>
     <th>Title</th>
     <th>Text</th>
+    <th></th>
   </tr>
   
   <% users={} %> 
@@ -19,6 +20,11 @@
       <td><%= users[post.user_id] %></td>
       <td><%= post.title %></td>
       <td><%= post.text %></td>
+      <% if post.uploadfile.url(:thumb) !="/images/thumb/missing.png" %>
+      <td><%= image_tag post.uploadfile.url(:thumb) %></td>
+      <% else %>
+      <td></td>
+      <% end %>
       <td><%= link_to 'Show', post %></td>
           <% if current_user.id==post.user_id %>
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
