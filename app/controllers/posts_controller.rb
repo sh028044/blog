@@ -3,7 +3,6 @@ class PostsController < ApplicationController
 	 @post= Post.new
 	end
 	def create
-	 #@post = Post.new(params[:post].permit(:title, :text,:user_id))
      @post=current_user.posts.build(params[:post].permit(:title, :text,:uploadfile))
   	 if @post.save
     	  redirect_to @post
@@ -15,9 +14,7 @@ class PostsController < ApplicationController
   	 @post = Post.find(params[:id])
 	end
 	def index
-  	 #@posts = Post.all
-     #@posts= Post.page(1).per(3).padding(2)
-     @posts=Post.page(params[:page]).per(2)
+     @posts=Post.page(params[:page]).per(5)
      @users = User.find(:all)
 	end
 	def edit
@@ -25,7 +22,7 @@ class PostsController < ApplicationController
 	end
 	def update
   	 @post = Post.find(params[:id]) 
-  	 if @post.update(params[:post].permit(:title, :text))
+  	 if @post.update(params[:post].permit(:title, :text,:uploadfile))
     	  redirect_to @post
   	 else
     	  render 'edit'
