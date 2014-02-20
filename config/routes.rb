@@ -1,8 +1,12 @@
 Blog::Application.routes.draw do
+  #get "blogblock/index"
+  #get "blogblock/new"
+  #get "blogblock/create"
   devise_for :users, :controllers => { :sessions => "users/sessions", :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :posts
   resources :login
   resources :users
+  resources :blogblock
   root to: "welcome#index"
   resources :posts do
    resources :comments

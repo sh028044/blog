@@ -1,0 +1,10 @@
+<%= render 'session' %>
+<%= form_for @blogblocks ,url: {action: "create"} do |f| %>
+  <p>
+    <%= f.label "Blog Name" %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

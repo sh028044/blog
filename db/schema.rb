@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218025537) do
+ActiveRecord::Schema.define(version: 20140220014238) do
+
+  create_table "blogblocks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "creator"
+  end
+
+  create_table "blogblocks_users", id: false, force: true do |t|
+    t.integer "user_id",      null: false
+    t.integer "blogblock_id", null: false
+  end
 
   create_table "comments", force: true do |t|
     t.string   "commenter"
@@ -42,8 +54,10 @@ ActiveRecord::Schema.define(version: 20140218025537) do
     t.string   "uploadfile_content_type"
     t.integer  "uploadfile_file_size"
     t.datetime "uploadfile_updated_at"
+    t.integer  "blogblock_id"
   end
 
+  add_index "posts", ["blogblock_id"], name: "index_posts_on_blogblock_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "users", force: true do |t|
