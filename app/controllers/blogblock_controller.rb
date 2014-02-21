@@ -12,6 +12,11 @@ class BlogblockController < ApplicationController
     @blogblocks.creator=current_user.id
     @blogblocks.save
     @blogblocks.users << current_user
-    redirect_to blogblock_index_path
+    redirect_to root_path
+  end
+  def destroy
+    @blogblock=Blogblock.find(params[:id])
+    @blogblock.destroy
+    redirect_to root_path
   end
 end

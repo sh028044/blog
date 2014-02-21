@@ -1,6 +1,7 @@
 <%= render 'session' %>
-<%= link_to "Public Blog", controller: "posts" %>
-<%= link_to 'New post', new_post_path %>
+<%= link_to 'New post', new_post_path(:blogblock_id => @blogblock_id) %>
+<%= link_to 'back',root_path %>
+
 <h1>Listing posts</h1>
  
 <table>
@@ -34,5 +35,5 @@
     </tr>
   <% end %>
 </table>
-<%= paginate @posts, :window => 3%>
-<%= link_to 'back',root_path %>
+<%= paginate @posts, :window => 3 %>
+<%= link_to 'Delete blog',blogblock_path(:id => @blogblock_id),method: :delete,data: { confirm: 'Are you sure?' } %>

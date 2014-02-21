@@ -1,9 +1,8 @@
 <h1>Hello, Rails!</h1>
 <% if user_signed_in? %>
 <%= current_user.email %>
-<%= link_to "Public Blog", posts_path %>
 <% @blogblocks.each do |blogblock| %>
-<%= link_to blogblock.name %>
+<%= link_to blogblock.name,posts_path(:blogblock_id => blogblock.id) %>
 <% end %>
 <%= link_to "New a Blog", new_blogblock_path %>
 <%= link_to "logout", destroy_user_session_path, method: :delete %>
